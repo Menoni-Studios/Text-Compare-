@@ -1,0 +1,54 @@
+/* General layout */
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+/* Input text areas */
+textarea {
+  width: 48%;
+  height: 100px;
+  margin: 6px;
+  padding: 8px;
+  font-family: monospace;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Buttons */
+button {
+  margin: 10px 0;
+  padding: 8px 20px;
+  font-size: 1rem;
+}
+
+/* Highlighted result boxes */
+.result-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Individual box style */
+.box {
+  width: 48%;
+  height: 150px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: monospace;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  background-color: #f9f9f9;
+}
+
+/* Highlighted changes */
+.added {
+  background-color: #c1f7c1;
+}
+
+.removed {
+  background-color: #f7c1c1;
+  text-decoration: line-through;
+}

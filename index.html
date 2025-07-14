@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Difference Viewer</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <h1>Compare 2 Texts🔤</h1>
+<div class="result-container">
+  <textarea id="text1" placeholder="Text A"></textarea>
+  <textarea id="text2" placeholder="Text B"></textarea><br>
+</div>  
+  <button onclick="compareTexts()">Compare</button>
+
+
+  <h1>Highlighted Differences🔤</h3>
+<div class="result-container">
+  <div class="box" id="resultA"></div>
+  <div class="box" id="resultB"></div>
+</div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/diff@5.0.0/dist/diff.min.js"></script>
+  <script>
+    function compareTexts() {
+      const textA = document.getElementById("text1").value;
+      const textB = document.getElementById("text2").value;
+
+      const resultA = document.getElementById("resultA");
+      const resultB = document.getElementById("resultB");
+
+      const diff = Diff.diffChars(textA, textB);
+      let outputA = "";
+      let outputB = "";
+
+      diff.forEach(part => {
+        if (part.added) {
+          outputB += `<span class="added">${part.value}</span>`;
+        } else if (part.removed) {
+          outputA += `<span class="removed">${part.value}</span>`;
+        } else {
+          outputA += part.value;
+          outputB += part.value;
+        }
+      });
+
+      resultA.innerHTML = outputA;
+      resultB.innerHTML = outputB;
+    }
+  </script>
+</body>
+</html>
