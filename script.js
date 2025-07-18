@@ -1,20 +1,40 @@
-function compare() {
-  const text1 = document.getElementById("text1").value;
-  const text2 = document.getElementById("text2").value;
-  const output = document.getElementById("output");
 
-  // Compare Text 2 to Text 1 — highlighting what's extra in Text 1
-  const diff = Diff.diffChars(text2, text1); // reversed order
+ function compareTexts() {
+      const textA = document.getElementById("text1").value;
+      const textB = document.getElementById("text2").value;
 
-  let resultA = "";
+      const resultA = document.getElementById("resultA");
+      const resultB = document.getElementById("resultB");
+      const message = document.getElementById("message");
 
-  diff.forEach(part => {
-    if (part.removed) {
-      resultA += `<span class="removed">${part.value}</span>`;
-    } else if (!part.added) {
-      resultA += part.value;
+      const diff = Diff.diffChars(textA, textB);
+      let outputA = "";
+      let outputB = "";
+      let hasDifference = false;
+
+
+      diff.forEach(part => {
+        if (part.added) {
+          outputB += `<span class="added">${part.value}</span>`;
+          hasDifference = true;
+        } else if (part.removed) {
+          outputA += `<span class="removed">${part.value}</span>`;
+        hasDifference=true;
+        } else {
+          outputA += part.value;
+          outputB += part.value;
+        }
+      });
+
+      resultA.innerHTML = outputA;
+      resultB.innerHTML = outputB;
+      message.textContent = hasDifference ? "🔍👀 There are differences 👀🔍" : "✅👌 There are no differences 👌✅";
     }
-  });
 
-  output.innerHTML = resultA;
+    function resetFields() {
+  document.getElementById("text1").value = "";
+  document.getElementById("text2").value = "";
+  document.getElementById("resultA").innerHTML = "";
+  document.getElementById("resultB").innerHTML = "";
+  document.getElementById("message").textContent = "";
 }
