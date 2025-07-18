@@ -1,9 +1,9 @@
 /* General layout */
-body {
+body{
+ background-color: lightblue; 
   font-family: sans-serif;
   padding: 20px;
 }
-
 /* Input text areas */
 textarea {
   width: 48%;
@@ -14,14 +14,15 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
-/* Buttons */
+/* Buttons*/
 button {
-  margin: 10px 0;
-  padding: 8px 20px;
-  font-size: 1rem;
+  font-family: Tahoma;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
-
+button:hover {
+  transform: scale(1.07);
+}
 /* Highlighted result boxes */
 .result-container {
   display: flex;
@@ -29,7 +30,19 @@ button {
   gap: 10px;
   margin-top: 10px;
 }
-
+.buttons{
+  height: 40px;
+  font-weight:200;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-left: 20px;
+  font-family: Times;
+}
+.reset{
+  background-color: #f7c1c1;
+  border-radius: 60%;
+}
 /* Individual box style */
 .box {
   width: 48%;
@@ -42,12 +55,10 @@ button {
   white-space: pre-wrap;
   background-color: #f9f9f9;
 }
-
 /* Highlighted changes */
 .added {
   background-color: #c1f7c1;
 }
-
 .removed {
   background-color: #f7c1c1;
   text-decoration: line-through;
